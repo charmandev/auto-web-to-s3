@@ -3,6 +3,7 @@ name: Deploy static content to s3
 
 on:
   # Runs on pushes targeting the default branch
+  workflow_dispatch:
   push:
     branches: ["main"]
 
