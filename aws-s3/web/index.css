@@ -1,0 +1,213 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /* Agrega una imagen de fondo en el lado derecho */
+    background-image: url('hero-image-simple-homepage.png');
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+    background-size: 40%; /* Establece el tamaño de la imagen al 35% del contenedor */
+    background-position: left 90% center; /* Posiciona la imagen de fondo a la izquierda y un poco más a la derecha */
+}
+
+
+
+.navbar{
+    display: flex;
+}
+
+.logo{
+    margin: 20px;
+    padding: 10px;
+}
+
+
+.listaNav {
+    display: flex;
+    list-style: none;
+    margin: 5px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center; 
+    width: 100%; 
+}
+
+.listaNav li {
+    margin: 0 5px; 
+    padding: 10px;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #909193;
+}
+
+
+.listaNav li {
+    margin: 0 5px; 
+    padding: 10px;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    transition: color 1s; /* Cambia la duración de la transición a 1.5 segundos */
+}
+
+.listaNav li:hover {
+    color: #000; /* Cambia el color del texto a negro cuando se pasa el mouse sobre el elemento */
+}
+
+
+
+
+.contenidoPrincipal{
+    display: block;
+    padding: 10px;
+    margin: 20px;
+    width: 50%;
+    height: auto;
+    margin-top: -5px;
+}
+
+
+
+.contenidoPrincipal h3{
+   padding: 0px;
+   font-size: 18px;
+   font-family: "Poppins", sans-serif;
+   font-weight: 800;
+   font-style: normal;
+   color: #2f5376;
+   margin-left: 50px;
+
+}
+
+.contenidoPrincipal h2{
+    margin-left: 50px;
+    margin-top: 10px;
+    font-size: 65px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #223344;
+
+ }
+
+
+ .contenidoPrincipal p{
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 30px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #2f5376;
+
+
+ }
+
+
+
+
+ .btn{
+    display: flex;
+    align-items: center;
+ }
+
+.boton {
+    margin: 10px;
+    padding: 15px 35px; /* Aumenta el padding horizontal */
+    background-color: #365eee;
+    border-radius: 15px;
+    margin-left: 60px;
+    border-color: #365eee;
+    transition: transform 0.3s, background-color 0.3s; /* Agrega transiciones suaves */
+}
+
+
+.boton:hover {
+    transform: scale(1.05); /* Aumenta levemente el tamaño al pasar el mouse */
+    background-color: #4a76ff; /* Cambia a un color un poco más claro */
+}
+
+ .boton h4{
+     background-color:  #365eee;
+     color: #F2F9FE;
+     font-size: 15px;
+     font-family: "Poppins", sans-serif;
+     font-weight: 700;
+     font-style: normal;
+     text-transform: uppercase;
+ }
+
+
+ .btn li{
+   list-style: none;
+   margin-left: 20px;
+   text-decoration: underline; 
+   color: #042ca2;
+   font-family: "Poppins", sans-serif;
+   font-weight: 700;
+   font-style: normal;
+ }
+
+
+
+
+ .DoneDiv{
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    margin-top: 30px;
+
+ }
+
+
+ .Done1 {
+    display: flex; /* Usa flexbox */
+    align-items: center; /* Alinea los elementos verticalmente */
+    margin-right: 50px;
+}
+
+.Done1 h3 {
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin: 0; /* Elimina cualquier margen en el texto */
+}
+
+.Done1 svg {
+    margin-right: 5px; /* Ajusta el margen entre el svg y el texto */
+}
+
+
+
+
+.Done2 {
+    display: flex; /* Usa flexbox */
+    align-items: center; /* Alinea los elementos verticalmente */
+}
+
+
+.Done2 h3 {
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin: 0; /* Elimina cualquier margen en el texto */
+
+}
+.Done1 svg {
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+}
+
+
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+
+
+
+
+ 
