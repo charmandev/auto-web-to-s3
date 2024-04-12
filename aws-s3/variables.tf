@@ -1,5 +1,5 @@
 variable "bucket_name" {
-  default = "charmandev"
+  default = "charmandev2"
 }
 
 
