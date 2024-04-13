@@ -19,6 +19,3 @@ output "route53_record" {
   value       = aws_route53_record.www.name
 }
 
-resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
-  comment = "Origin access identity for ${var.bucket_name}"
-}
