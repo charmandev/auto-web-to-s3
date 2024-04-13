@@ -81,17 +81,6 @@ resource "aws_acm_certificate_validation" "cert" {
   validation_record_fqdns = [for record in aws_route53_record.validation : record.fqdn]
 }
 
-resource "aws_route53_record" "www" {
-  name    = "www.tuwebi.com.ar"
-  type    = "A"
-  zone_id = data.aws_route53_zone.selected.zone_id
-
-  alias {
-    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
-    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
-    evaluate_target_health = false
-  }
-}
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
