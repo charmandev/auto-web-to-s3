@@ -67,10 +67,9 @@ resource "aws_route53_record" "validation" {
       type   = dvo.resource_record_type
     }
   }
-
   name    = each.value.name
   type    = each.value.type
-  zone_id = data.aws_route53_zone.selected.zone_id
+  zone_id = aws_route53_zone.my_zone.zone_id
   records = [each.value.record]
   ttl     = 60
 }
