@@ -11,6 +11,9 @@ provider "aws" {
   region     = "us-east-1"
 }
 
+data "aws_route53_zone" "selected" {
+  name = "tuwebi.com.ar"
+}
 
 resource "aws_s3_bucket" "bucket_web" {
   bucket = var.bucket_name
