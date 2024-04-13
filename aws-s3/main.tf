@@ -43,19 +43,6 @@ resource "aws_s3_bucket" "bucket_web" {
 }
 
 
-resource "aws_acm_certificate" "cert" {
-  domain_name       = "tuwebi.com.ar"
-  validation_method = "DNS"
-
-  tags = {
-    Name = "tuwebi.com.ar"
-  }
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
 resource "aws_route53_record" "validation" {
   for_each = {
     for dvo in aws_acm_certificate.cert.domain_validation_options : dvo.domain_name => {
