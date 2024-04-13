@@ -52,7 +52,7 @@ resource "aws_route53_record" "validation" {
 
   name    = each.value.name
   type    = each.value.type
-  zone_id = aws_route53_zone.selected.zone_id
+  zone_id = data.aws_route53_zone.selected.zone_id
   records = [each.value.record]
   ttl     = 60
 }
@@ -65,19 +65,7 @@ resource "aws_acm_certificate_validation" "cert" {
 resource "aws_route53_record" "www" {
   name    = "www.tuwebi.com.ar"
   type    = "A"
-  zone_id = aws_route53_zone.selected.zone_id
-
-  alias {
-    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
-    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "www" {
-  name    = "www.tuwebi.com.ar"
-  type    = "A"
-  zone_id = aws_route53_zone.selected.zone_id
+  zone_id = data.aws_route53_zone.selected.zone_id
 
   alias {
     name                   = aws_cloudfront_distribution.s3_distribution.domain_name
