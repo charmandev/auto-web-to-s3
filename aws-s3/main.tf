@@ -42,9 +42,6 @@ resource "aws_s3_bucket" "bucket_web" {
   }
 }
 
-resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
-  comment = "Origin access identity for ${var.bucket_name}"
-}
 
 resource "aws_acm_certificate" "cert" {
   domain_name       = "tuwebi.com.ar"
@@ -78,11 +75,3 @@ resource "aws_acm_certificate_validation" "cert" {
   certificate_arn         = aws_acm_certificate.cert.arn
   validation_record_fqdns = [for record in aws_route53_record.validation : record.fqdn]
 }
-
-
-
-
-
-
-
-
