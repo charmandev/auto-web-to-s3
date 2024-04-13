@@ -1,6 +1,6 @@
 resource "aws_acm_certificate" "cert" {
   domain_name       = "tuwebi.com.ar"
-  validation_method = "EMAL"
+  validation_method = "EMAIL"
 
   tags = {
     Name = "tuwebi.com.ar"
