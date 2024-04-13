@@ -13,10 +13,10 @@ provider "aws" {
 
 resource "aws_route53_zone" "my_zone" {
   name = "tuwebi.com.ar"
-}
 
-data "aws_route53_zone" "selected" {
-  name = "tuwebi.com.ar"
+  lifecycle {
+    ignore_changes = all
+  }
 }
 
 resource "aws_route53_record" "www" {
@@ -30,7 +30,6 @@ resource "aws_route53_record" "www" {
     evaluate_target_health = false
   }
 }
-
 resource "aws_s3_bucket" "bucket_web" {
   bucket = var.bucket_name
 
