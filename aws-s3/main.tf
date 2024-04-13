@@ -54,7 +54,7 @@ resource "aws_acm_certificate" "cert" {
     create_before_destroy = true
   }
 }
-
+/*
 resource "aws_route53_record" "validation" {
   for_each = {
     for dvo in aws_acm_certificate.cert.domain_validation_options : dvo.domain_name => {
@@ -69,6 +69,7 @@ resource "aws_route53_record" "validation" {
   records = [each.value.record]
   ttl     = 60
 }
+*/
 
 resource "aws_acm_certificate_validation" "cert" {
   certificate_arn         = aws_acm_certificate.cert.arn
