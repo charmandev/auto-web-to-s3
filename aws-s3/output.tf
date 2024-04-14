@@ -11,7 +11,7 @@ output "cloudfront_domain_name" {
 
 output "acm_certificate_arn" {
   description = "The ARN of the ACM certificate"
-  value       = aws_acm_certificate.cert.arn
+  value       = aws_acm_certificate.certificate.arn
 }
 
 output "route53_record" {
