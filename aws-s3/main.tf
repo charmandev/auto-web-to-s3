@@ -6,6 +6,13 @@ provider "aws" {
   region = "us-east-1"
 }
 
+resource "aws_route53_zone" "my_zone" {
+  name = "tuwebi.com.ar"
+
+  lifecycle {
+    ignore_changes = all
+  }
+}
 
 variable "root_domain_name" {
   type    = string
