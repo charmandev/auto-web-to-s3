@@ -19,11 +19,6 @@ variable "root_domain_name" {
   default = "tuwebi.com.ar"
 }
 
-data "aws_route53_zone" "certificate_route53_zone" {
-  name         = var.root_domain_name
-  private_zone = false
-}
-
 resource "aws_acm_certificate" "certificate" {
   domain_name               = var.root_domain_name
   subject_alternative_names = ["*.${var.root_domain_name}"]
@@ -48,7 +43,7 @@ resource "aws_route53_record" "cert_dns" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = data.aws_route53_zone.certificate_route53_zone.zone_id
+  zone_id         = aws_route53_zone.my_zone.zone_id
 }
 
 resource "aws_acm_certificate_validation" "certificate" {
