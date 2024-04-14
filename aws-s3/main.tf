@@ -47,4 +47,4 @@ resource "aws_route53_record" "cert_dns" {
 resource "aws_acm_certificate_validation" "certificate" {
   certificate_arn         = aws_acm_certificate.certificate.arn
   validation_record_fqdns = [for record in aws_route53_record.cert_dns : record.fqdn]
-}
+} 
