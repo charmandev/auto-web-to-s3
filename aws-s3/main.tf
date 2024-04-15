@@ -11,6 +11,13 @@ provider "aws" {
   region     = "us-east-1"
 }
 
+resource "aws_route53_zone" "my_zone" {
+  name = "tuwebi.com.ar"
+
+  lifecycle {
+    ignore_changes = all
+  }
+}
 
 resource "aws_s3_bucket" "bucket_web" {
   bucket = var.bucket_name
