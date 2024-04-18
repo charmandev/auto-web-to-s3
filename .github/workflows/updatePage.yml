@@ -35,6 +35,7 @@ jobs:
           cd aws-s3
           ls && pwd
           terraform init
+          terraform apply -target=aws_route53_zone.my_zone -auto-approve
           terraform apply -target=aws_acm_certificate.certificate -auto-approve
           terraform apply -auto-approve
         env:
