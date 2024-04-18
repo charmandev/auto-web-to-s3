@@ -7,7 +7,7 @@ terraform {
   }
 
     backend "s3" {
-    bucket = "my-terraform-state-webi"
+    bucket = "my-terraform-state-webi-v1"
     key    = "./terraform.tfstate"
     region = "us-east-1"
     dynamodb_table = "terraform-state"
