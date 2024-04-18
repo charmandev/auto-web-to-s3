@@ -1,7 +1,10 @@
 resource "aws_route53_zone" "my_zone" {
   name = "tuwebi.com.ar"
-}
 
+  lifecycle {
+    ignore_changes = all
+  }
+}
 
 resource "aws_route53_record" "www" {
   name    = "www.tuwebi.com.ar"
