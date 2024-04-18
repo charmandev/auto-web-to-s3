@@ -1,4 +1,4 @@
-resource "aws_route53_zone" "example_zone" {
+resource "aws_route53_zone" "my_zone" {
   name = "tuwebi.com.ar"
 }
 
