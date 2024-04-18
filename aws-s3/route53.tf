@@ -19,20 +19,17 @@ resource "aws_route53_record" "www" {
 }
 
 resource "aws_route53_record" "cert_dns" {
-  for_each = {
-    for robo in aws_acm_certificate.certificate.domain_validation_options : robo.domain_name => {
-      name   = robo.resource_record_name
-      record = robo.resource_record_value
-      type   = robo.resource_record_type
-    }
-  }
+  for_each = { for idx, robo in flatten([for cert in aws_acm_certificate.certificate : cert.domain_validation_options]) : idx => {
+    name   = robo.resource_record_name
+    record = robo.resource_record_value
+    type   = robo.resource_record_type
+  } }
 
-  allow_overwrite = true
-  name            = each.value.name
-  records         = [each.value.record]
-  ttl             = 60
-  type            = each.value.type
-  zone_id         = data.aws_route53_zone.certificate_route53_zone.zone_id
+  zone_id = aws_route53_zone.example_zone.zone_id
+  name    = each.value.name
+  type    = each.value.type
+  records = [each.value.record]
+  ttl     = 60
 }
 
 resource "aws_acm_certificate_validation" "certificate" {
