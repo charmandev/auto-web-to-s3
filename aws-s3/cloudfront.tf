@@ -48,5 +48,11 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2018"
   }
+
+  provisioner "local-exec" {
+    command = <<EOF
+      aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} --paths "/*"
+    EOF
+  }
 }
 
