@@ -5,7 +5,9 @@ on:
   # Runs on pushes targeting the default branch
   workflow_dispatch:
   push:
-    branches: ["main", "cloudfront"]
+    branches: ["main", "dev"]
+    paths:
+      - 'aws-s3/web/**' 
 
 jobs:
   terraform:
@@ -38,3 +40,11 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
+      - name: Terraform destroy on failure
+        if: failure()
+        run: |
+          cd aws-s3
+          terraform destroy -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
