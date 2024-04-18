@@ -1,3 +1,8 @@
+resource "aws_route53_zone" "example_zone" {
+  name = "tuwebi.com.ar"
+}
+
+
 resource "aws_route53_record" "www" {
   name    = "www.tuwebi.com.ar"
   type    = "A"
