@@ -18,8 +18,8 @@ terraform {
 resource "aws_dynamodb_table" "terraform_state_lock" {
   name           = "terraform-state"
   hash_key       = "LockID"
-  read_capacity  = 20
-  write_capacity = 20
+  read_capacity  = 5
+  write_capacity = 5
 
   attribute {
     name = "LockID"
