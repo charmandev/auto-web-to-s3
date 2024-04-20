@@ -6,6 +6,18 @@ resource "aws_route53_zone" "my_zone" {
   }
 }
 
+resource "aws_route53_record" "root" {
+  name    = "tuwebi.com.ar"
+  type    = "A"
+  zone_id = aws_route53_zone.my_zone.zone_id
+
+  alias {
+    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "www" {
   name    = "www.tuwebi.com.ar"
   type    = "A"
@@ -17,6 +29,7 @@ resource "aws_route53_record" "www" {
     evaluate_target_health = false
   }
 }
+
 
 resource "aws_route53_record" "cert_dns" {
   for_each = {
@@ -38,4 +51,8 @@ resource "aws_route53_record" "cert_dns" {
 resource "aws_acm_certificate_validation" "certificate" {
   certificate_arn         = aws_acm_certificate.certificate.arn
   validation_record_fqdns = [for record in aws_route53_record.cert_dns : record.fqdn]
+
+  timeouts {
+    create = "90m"  # tiempo máximo de espera para la creación del recurso
+  } 
 }

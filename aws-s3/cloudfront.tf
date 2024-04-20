@@ -35,6 +35,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     max_ttl                = 86400
   }
 
+  aliases = ["www.tuwebi.com.ar", "tuwebi.com.ar"] 
+
   price_class = "PriceClass_100"
 
   restrictions {
@@ -49,10 +51,5 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     minimum_protocol_version = "TLSv1.2_2018"
   }
 
-  provisioner "local-exec" {
-    command = <<EOF
-      aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} --paths "/*"
-    EOF
-  }
 }
 

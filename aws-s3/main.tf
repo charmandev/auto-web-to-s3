@@ -5,7 +5,7 @@ terraform {
         version = "3.4"
     }
   }
-
+/*
     backend "s3" {
     bucket = "my-terraform-state-webi-v1"
     key    = "./terraform.tfstate"
@@ -13,8 +13,15 @@ terraform {
     dynamodb_table = "terraform-state"
     encrypt = true
   }
+  */
 }
 
+provider "aws" {
+  region     = "us-east-1"
+  access_key = var.access_key_var
+  secret_key = var.secret_key_var
+}
+/*
 resource "aws_dynamodb_table" "terraform_state_lock" {
   name           = "terraform-state"
   hash_key       = "LockID"
@@ -26,7 +33,7 @@ resource "aws_dynamodb_table" "terraform_state_lock" {
     type = "S"
   }
 }
-
+*/
 resource "aws_s3_bucket" "bucket_web" {
   bucket = var.bucket_name
 
