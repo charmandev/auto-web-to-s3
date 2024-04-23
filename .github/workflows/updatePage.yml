@@ -52,10 +52,10 @@ jobs:
           # Ejecutar Terraform y guardar el valor de cloudfront_domain_name en una variable
           cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name | cut -d':' -f1)
 
-          echo "cloudfront_domain_name $cloudfront_domain_name"
+          echo "cloudfront_domain_name is $cloudfront_domain_name"
           
           # Extraer el ID de la distribución de CloudFront del nombre de dominio
-          distribution_id=$(aws cloudfront list-distributions --query "DistributionList.Items[?DomainName=='$cloudfront_domain_name'].Id" --output text)
+          distribution_id=$(aws cloudfront list-distributions --query "DistributionList.Items[?DomainName=='https://d21p8cye3uk2cs.cloudfront.net'].Id" --output text)
       
       
           echo "debug $distribution_id"
