@@ -42,6 +42,8 @@ jobs:
 
       - name: Clean cloufront cache
         run: |
+          cd aws-s3
+          ls && pwd
           # Ejecutar Terraform y guardar el valor de cloudfront_domain_name en una variable
           cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name)
           
