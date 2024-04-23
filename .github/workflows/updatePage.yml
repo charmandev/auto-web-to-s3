@@ -31,6 +31,8 @@ jobs:
           echo "aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set region your_aws_region
+
 
       - name: Terraform init and apply
         run: |
@@ -50,11 +52,11 @@ jobs:
           cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name)
           
           # Extraer el ID de la distribución de CloudFront del nombre de dominio
-          distribution_id=$(aws cloudfront list-distributions --query "DistributionList.Items[?DomainName=='cloudfront_domain_name'].Id" --output text)
-
+          distribution_id=$(aws cloudfront list-distributions --query "DistributionList.Items[?DomainName=='$cloudfront_domain_name'].Id" --output text)
+      
           echo "cloudfront_domain_name $cloudfront_domain_name"
-
+      
           echo "debug $distribution_id"
-
+      
           # Crear la invalidación
           aws cloudfront create-invalidation --distribution-id $distribution_id --paths "/*" --profile default
