@@ -47,5 +47,8 @@ jobs:
           # Ejecutar Terraform y guardar el valor de cloudfront_domain_name en una variable
           cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name)
           
-          # Utilizar la variable en tu script
-          echo "El nombre de dominio de CloudFront es: $cloudfront_domain_name"
+          # Extraer el ID de la distribución de CloudFront del nombre de dominio
+          distribution_id=$(echo "${cloudfront_domain_name}" | cut -d'.' -f1)
+
+          # Crear la invalidación
+          aws cloudfront create-invalidation --distribution-id "${distribution_id}" --paths "/*" --profile default --region us-east-1
