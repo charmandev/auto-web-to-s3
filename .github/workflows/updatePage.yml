@@ -49,6 +49,10 @@ jobs:
           cd aws-s3
           ls && pwd
           
+          echo "debug --"
+          terraform output -raw cloudfront_domain_name
+          echo "debug --"
+          
           # Ejecutar Terraform y guardar el valor de cloudfront_domain_name en una variable
           cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name | awk -F '::debug::Terraform' '{print $1}')
 
