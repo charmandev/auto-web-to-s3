@@ -39,7 +39,7 @@ jobs:
           cd aws-s3
           ls && pwd
           terraform init
-          terraform apply -auto-approve
+          #terraform apply -auto-approve
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -55,7 +55,7 @@ jobs:
           echo "cloudfront_domain_name is $cloudfront_domain_name"
           
           # Extraer el ID de la distribución de CloudFront del nombre de dominio
-          distribution_id=$(aws cloudfront list-distributions --query "DistributionList.Items[?DomainName=='https://d21p8cye3uk2cs.cloudfront.net'].Id" --output text)
+          distribution_id=$(aws cloudfront list-distributions --query "DistributionList.Items[?DomainName=='d21p8cye3uk2cs.cloudfront.net'].Id" --output text)
       
       
           echo "debug $distribution_id"
