@@ -50,5 +50,7 @@ jobs:
           # Extraer el ID de la distribución de CloudFront del nombre de dominio
           distribution_id=$(aws cloudfront list-distributions --query "DistributionList.Items[?DomainName=='${cloudfront_domain_name}'].Id" --output text)
 
+          echo "$distribution_id"
+
           # Crear la invalidación
           aws cloudfront create-invalidation --distribution-id $distribution_id --paths "/*" --profile default
