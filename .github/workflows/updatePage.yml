@@ -48,11 +48,9 @@ jobs:
         run: |
           cd aws-s3
           ls && pwd
-
-          terraform output -raw cloudfront_domain_name
           
           # Ejecutar Terraform y guardar el valor de cloudfront_domain_name en una variable
-          cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name)
+          cloudfront_domain_name=$(terraform output -json cloudfront_domain_name | jq -r '. | split(".")[0]')
           
           echo "cloudfront_domain_name $cloudfront_domain_name"
           
