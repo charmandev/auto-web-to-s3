@@ -8,3 +8,12 @@ output "cloudfront_domain_name" {
   value       = aws_cloudfront_distribution.s3_distribution.domain_name
 }
 
+output "acm_certificate_arn" {
+  description = "The ARN of the ACM certificate"
+  value       = aws_acm_certificate.certificate.arn
+}
+
+output "route53_record" {
+  description = "The DNS record for the domain"
+  value       = aws_route53_record.www.name
+}
