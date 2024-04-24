@@ -54,14 +54,12 @@ jobs:
           echo "debug --"
           
           # Ejecutar Terraform y guardar el valor de cloudfront_domain_name en una variable
-          cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name | awk '{print $NF}')
+          cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name)
           echo "cloudfront_domain_name is $cloudfront_domain_name"
           echo "::set-output name=cloudfront_domain_name::$cloudfront_domain_name"
-          
+      
           # Extraer el ID de la distribución de CloudFront del nombre de dominio
-          distribution_id=$(aws cloudfront list-distributions --query "DistributionList.Items[?DomainName=='${cloudfront_domain_name}'].Id" --output text)
-      
-      
+          distribution_id=$(aws cloudfront list-distributions --query "DistributionList.Items[?DomainName=='$cloudfront_domain_name'].Id" --output text)
           echo "debug $distribution_id"
       
           # Crear la invalidación
