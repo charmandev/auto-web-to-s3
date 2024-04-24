@@ -51,7 +51,7 @@ jobs:
           
           echo "debug --"
           # Ejecutar Terraform y guardar el valor de cloudfront_domain_name en una variable
-          cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name | awk -F '::debug::Terraform' '{print $1}')
+          cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name | sed -n 's/.*\(\S*\.cloudfront\.net\).*/\1/p')
           echo "cloudfront_domain_name is $cloudfront_domain_name"
 
       
