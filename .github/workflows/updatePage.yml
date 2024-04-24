@@ -53,7 +53,7 @@ jobs:
           # Ejecutar Terraform y guardar el valor de cloudfront_domain_name en una variable
           cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name | sed -n 's/.* \(\S*\.cloudfront\.net\).*/\1/p')
 
-          echo "cloudfront_domain_name is $cloudfront_domain_name"
+          echo "cloudfront_domain_name is $cloudfront_domain_name <-"
 
       
           # Extraer el ID de la distribución de CloudFront del nombre de dominio
