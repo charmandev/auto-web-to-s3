@@ -46,20 +46,8 @@ jobs:
 
       - name: Clean cloufront cache
         run: |
-          cd aws-s3
-          ls && pwd
-          echo "debug --"
-          output=$(terraform output cloudfront_domain_name)
-
-          # Utilizar awk para extraer solo el valor de d2u77lv8dfkxmn.cloudfront.net
-          cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name | sed -n 's/.*\(\S\{14\}\)\.cloudfront\.net.*/\1.cloudfront.net/p' | head -n 1)
-
-
-
-          echo "debug -$cloudfront_domain_name-"
           # Ejecutar Terraform y guardar el valor de cloudfront_domain_name en una variable
-
-
+          cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name | sed -n 's/.*\(\S\{14\}\)\.cloudfront\.net.*/\1.cloudfront.net/p' | head -n 1)
       
           # Extraer el ID de la distribución de CloudFront del nombre de dominio
           distribution_id=$(aws cloudfront list-distributions --query "DistributionList.Items[?DomainName=='${cloudfront_domain_name}'].Id" --output text)
