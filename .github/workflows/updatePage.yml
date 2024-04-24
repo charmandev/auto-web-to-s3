@@ -52,7 +52,7 @@ jobs:
           output=$(terraform output cloudfront_domain_name)
 
           # Utilizar awk para extraer solo el valor de d2u77lv8dfkxmn.cloudfront.net
-          cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name | sed -n 's/.*\(\S\{13\}\)\.cloudfront\.net.*/\1.cloudfront.net/p' | head -n 1)
+          cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name | sed -n 's/.*\(\S\{14\}\)\.cloudfront\.net.*/\1.cloudfront.net/p' | head -n 1)
 
 
 
@@ -63,7 +63,7 @@ jobs:
       
           # Extraer el ID de la distribución de CloudFront del nombre de dominio
           distribution_id=$(aws cloudfront list-distributions --query "DistributionList.Items[?DomainName=='${cloudfront_domain_name}'].Id" --output text)
-          echo "debug $distribution_id"
+          echo "debug distribution_id $distribution_id"
       
           # Crear la invalidación
           aws cloudfront create-invalidation --distribution-id $distribution_id --paths "/*" --profile default
