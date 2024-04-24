@@ -48,10 +48,11 @@ jobs:
         run: |
           cd aws-s3
           ls && pwd
-          
+          echo "debug --"
+          terraform output cloudfront_domain_name
           echo "debug --"
           # Ejecutar Terraform y guardar el valor de cloudfront_domain_name en una variable
-          cloudfront_domain_name=$(terraform output -raw cloudfront_domain_name | sed -n 's/.* \(\S*\.cloudfront\.net\).*/\1/p')
+          cloudfront_domain_name=$(terraform output cloudfront_domain_name)
 
           echo "cloudfront_domain_name is $cloudfront_domain_name <-"
 
