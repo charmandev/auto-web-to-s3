@@ -38,8 +38,12 @@ resource "aws_s3_bucket" "bucket_web" {
 
 }
 
+data "aws_s3_bucket_objects" "bucket_objects" {
+  bucket = var.bucket_name
+}
+
 resource "aws_s3_bucket_object" "bucket_objects" {
-  for_each = aws_s3_bucket.bucket_web.objects
+  for_each = data.aws_s3_bucket_objects.bucket_objects.objects
 
   bucket = var.bucket_name
   key    = each.value.key
@@ -47,3 +51,4 @@ resource "aws_s3_bucket_object" "bucket_objects" {
   # Agrega dependencia para que los objetos se eliminen antes de recrear el bucket
   depends_on = [aws_s3_bucket.bucket_web]
 }
+
