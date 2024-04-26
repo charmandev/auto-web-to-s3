@@ -44,7 +44,6 @@ jobs:
                   --attribute-definitions AttributeName=LockID,AttributeType=S \
                   --key-schema AttributeName=LockID,KeyType=HASH \
                   --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
-                  sleep 15
           fi
 
       - name: Refresh bucket
@@ -55,10 +54,8 @@ jobs:
           # Lista todos los objetos en el bucket
           objects=$(aws s3 ls s3://$bucket_name --recursive | awk '{print $4}')
           
-          # Elimina cada objeto en el bucket
-          for obj in $objects; do
-            aws s3 rm s3://$bucket_name/$obj
-          done
+          # Elimina el bucket
+          aws s3 rb s3://$bucket_name
 
       - name: Terraform init and apply
         run: |
