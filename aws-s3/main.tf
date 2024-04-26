@@ -31,5 +31,9 @@ resource "aws_s3_bucket" "bucket_web" {
     index_document = "index.html"
   }
 
+  lifecycle {
+    create_before_destroy = true
+  }
+
 }
 
