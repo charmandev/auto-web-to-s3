@@ -29,14 +29,6 @@ resource "aws_s3_bucket" "bucket_web" {
     index_document = "index.html"
   }
 
-  lifecycle_rule {
-    id      = "delete-bucket"
-    enabled = true
-
-    expiration {
-      days = 0
-    }
-  }
 }
 
 
