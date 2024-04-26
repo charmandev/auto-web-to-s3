@@ -1,9 +1,9 @@
-
 resource "aws_s3_bucket_object" "site_files" {
   for_each = fileset("${path.module}/web", "**/*")
 
   bucket = aws_s3_bucket.bucket_web.id
   key    = replace(each.value, "^web/", "")
+  acl    = "public-read"
   source = "${path.module}/web/${each.value}"
   content_type = lookup({
     "tml" : "text/html",
@@ -15,5 +15,6 @@ resource "aws_s3_bucket_object" "site_files" {
     "svg"  : "image/svg+xml",
     ".js"   : "application/javascript",
   }, lower(substr(basename(each.value), -3, 3)), "application/octet-stream")
-}
 
+  etag = filemd5("${path.module}/web/${each.value}")
+}
