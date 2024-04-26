@@ -20,10 +20,12 @@ jobs:
 
       - name: Replace $REPO in main.tf
         run: |
+          cd aws-s3
           sed -i "s/\$REPO/${{ env.REPO }}/g" main.tf
 
       - name: Replace $REPO in variables.tf
         run: |
+          cd aws-s3
           sed -i "s/\$REPO/${{ env.REPO }}/g" variables.tf
 
       - name: Set up Terraform
