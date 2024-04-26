@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket         = "tfstate-tar-testing-char"
-    dynamodb_table = "my-terraform-state-lock-aws-web-to-s3-test3"
+    dynamodb_table = "my-terraform-state-lock-auto-web-to-s3-test4"
     key            = "environments/testing/aws-s3-bucket.tfstate"
     region         = "us-east-1"
   }
