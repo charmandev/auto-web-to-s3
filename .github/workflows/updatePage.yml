@@ -46,14 +46,14 @@ jobs:
                   --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
           fi
 
-      - name: Refresh bucket
-        run: |
-          # Nombre del bucket
-          bucket_name="charmandev2"
+#      - name: Refresh bucket
+ #       run: |
+  #        # Nombre del bucket
+   #       bucket_name="charmandev2"
           
           # Elimina el bucket
-          aws s3 rm s3://$bucket_name --recursive
-          aws s3 rb s3://$bucket_name
+    #      aws s3 rm s3://$bucket_name --recursive
+     #     aws s3 rb s3://$bucket_name
 
       - name: Terraform init and apply
         run: |
