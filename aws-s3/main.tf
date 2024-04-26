@@ -15,10 +15,8 @@ terraform {
 
 
 provider "aws" {
-  region     = "us-east-1"
+  region = "us-east-1"
 }
-
-
 
 resource "aws_s3_bucket" "bucket_web" {
   bucket = var.bucket_name
@@ -31,7 +29,6 @@ resource "aws_s3_bucket" "bucket_web" {
     index_document = "index.html"
   }
 
-
   lifecycle_rule {
     id      = "delete-bucket"
     enabled = true
@@ -39,6 +36,9 @@ resource "aws_s3_bucket" "bucket_web" {
     expiration {
       days = 0
     }
+  }
+}
+
 
 
 }
