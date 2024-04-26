@@ -51,9 +51,6 @@ jobs:
           # Nombre del bucket
           bucket_name="charmandev2"
           
-          # Lista todos los objetos en el bucket
-          objects=$(aws s3 ls s3://$bucket_name --recursive | awk '{print $4}')
-          
           # Elimina el bucket
           aws s3 rb s3://$bucket_name
 
