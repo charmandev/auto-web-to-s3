@@ -14,10 +14,17 @@ jobs:
     steps:
       - name: Get repository name
         run: echo "REPO=$(echo ${{ github.repository }} | cut -d'/' -f 2)" >> $GITHUB_ENV
-
         
       - name: Checkout code
         uses: actions/checkout@v2 
+
+      - name: Replace $REPO in main.tf
+        run: |
+          sed -i "s/\$REPO/${{ env.REPO }}/g" main.tf
+
+      - name: Replace $REPO in variables.tf
+        run: |
+          sed -i "s/\$REPO/${{ env.REPO }}/g" variables.tf
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
