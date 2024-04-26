@@ -17,4 +17,3 @@ resource "aws_s3_bucket_object" "site_files" {
 
   etag = filemd5("${path.module}/web/${each.value}")
 }
-}
