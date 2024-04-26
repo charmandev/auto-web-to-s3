@@ -52,7 +52,7 @@ jobs:
           bucket_name="charmandev2"
           
           # Elimina el bucket
-          aws s3 rb s3://$bucket_name
+          aws s3 rb s3://$bucket_name --recursive
 
       - name: Terraform init and apply
         run: |
