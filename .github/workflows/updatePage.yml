@@ -47,6 +47,19 @@ jobs:
                   sleep 15
           fi
 
+      - name: Refresh bucket
+        run: |
+          # Nombre del bucket
+          bucket_name="charmandev2"
+          
+          # Lista todos los objetos en el bucket
+          objects=$(aws s3 ls s3://$bucket_name --recursive | awk '{print $4}')
+          
+          # Elimina cada objeto en el bucket
+          for obj in $objects; do
+            aws s3 rm s3://$bucket_name/$obj
+          done
+
       - name: Terraform init and apply
         run: |
           cd aws-s3
