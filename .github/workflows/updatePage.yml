@@ -23,6 +23,7 @@ jobs:
           cd aws-s3
           ls
           sed -i "s/\$REPO/${{ env.REPO }}/g" main.tf
+          cat main.tf
           cat a.pdf
       - name: Replace $REPO in variables.tf
         run: |
