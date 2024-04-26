@@ -12,7 +12,7 @@ jobs:
     name: push web on s3
     runs-on: ubuntu-latest
     outputs:
-      REPOSITORy: ${{ steps.set-matrix.outputs.REPO }}
+      REPOSITORY: ${{ steps.set-matrix.outputs.REPO }}
     steps:
       - name: Get repository name
         id: get_repo_name
