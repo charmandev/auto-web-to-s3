@@ -14,4 +14,6 @@ resource "aws_s3_bucket_object" "site_files" {
     "svg"  : "image/svg+xml",
     ".js"   : "application/javascript",
   }, lower(substr(basename(each.value), -3, 3)), "application/octet-stream")
+
+  etag = filemd5("${path.module}/web/${each.value}")
 }
