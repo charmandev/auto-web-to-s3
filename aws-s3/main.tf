@@ -41,7 +41,7 @@ resource "aws_s3_bucket" "bucket_web" {
 resource "aws_s3_bucket_object" "bucket_objects" {
   for_each = aws_s3_bucket.bucket_web.objects
 
-  bucket = aws_s3_bucket.bucket_web.bucket
+  bucket = var.bucket_name
   key    = each.value.key
 
   # Agrega dependencia para que los objetos se eliminen antes de recrear el bucket
