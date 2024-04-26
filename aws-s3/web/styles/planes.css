@@ -1,0 +1,274 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body{
+    width: 100%;
+    min-height: 100%; 
+    background-image: linear-gradient(to right, #000214, #1000bf85);
+}
+
+
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    position: relative;
+}
+
+a:hover {
+    color: orange;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: orange;
+    transition: width 0.3s ease-in-out;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+.header1 {
+    width: 80%;
+    height: 60px;
+    position: relative;
+    padding: 0 2rem;
+}
+
+.navbar {
+    width: 100%;
+    height: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo img {
+    width: 150px;
+}
+
+.navbar .links {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar .links a {
+    position: relative;
+}
+
+.navbar .links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: orange;
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar .links a:hover::after {
+    width: 100%;
+}
+
+.navbar .toggle_btn {
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.action_btn {
+    background-color: orange;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: .8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.action_btn:hover {
+    transform: scale(1.05);
+}
+
+.action_btn:active {
+    transform: scale(0.95);
+}
+
+.dropdown_menu {
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    width: 200px;
+    background-color: grey;
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown_menu.open {
+    display: block;
+}
+
+.dropdown_menu li {
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown_menu .action_btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+@media(max-width: 992px) {
+    .navbar .links,
+    .navbar .action_btn {
+        display: none;
+    }
+
+    .navbar .toggle_btn {
+        display: block;
+    }
+
+    .dropdown_menu {
+        display: none;
+        position: absolute;
+        right: 2rem;
+        top: 60px;
+        width: 200px; /* Cambiado de 100% a auto */
+        background-color: grey;
+        backdrop-filter: blur(15px);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .dropdown_menu.open {
+        display: block;
+    }
+
+    .dropdown_menu li {
+        padding: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 576px) {
+    .dropdown_menu {
+        left: 2rem;
+        width: unset;
+    }
+}
+
+
+.header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.header h3{
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.644), 0 0 30px ; 
+    text-align: center;
+    margin-top:20px;
+    font-weight: 400;    
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+   
+
+
+.Planes {
+    width: 100%;
+    min-height: 550px; 
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .Planes {
+        grid-template-columns: 100%;
+        grid-template-rows: 25% 25% 25% 25%;
+        margin-top: 1rem;
+        min-height: 1200px; 
+    }
+}
+
+
+
+
+.planBasico h3, .planBusiness h3, .planEstandar h3, .planPersonalizado h3{
+    font-size: 2rem;
+    color: #d713f1;
+}
+
+
+.planBasico p, .planBusiness p, .planEstandar p, .planPersonalizado p{
+    font-size: 1.2rem;
+    color: white;
+}
+
+
+
+
+.precios{
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+.e-commerce{
+    width: 100%;
+    height: 650px;
+    overflow: hidden;
+}
+
+
+
+.footer{
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}

@@ -5,10 +5,20 @@ terraform {
         version = "3.4"
     }
   }
+  backend "s3" {
+    bucket         = "tfstate-tar-testing-char"
+    dynamodb_table = "my-terraform-state-lock-aws-web-to-s3"
+    key            = "environments/testing/aws-s3-bucket.tfstate"
+    region         = "us-east-1"
+  }
 }
+
+
 provider "aws" {
   region     = "us-east-1"
 }
+
+
 
 resource "aws_s3_bucket" "bucket_web" {
   bucket = var.bucket_name

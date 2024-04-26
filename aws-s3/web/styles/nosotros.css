@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-optical-sizing: auto;
+    font-style: normal;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    min-height: 100vh; /* Viewport Height */
+  }
+  
+  body {
+    background-image: linear-gradient(to right, #000214, #1000bf85);
+  }
+
+.main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+
+/* Media query para pantallas menores de 768px */
+@media (max-width: 767px) {
+    .main {
+        flex-direction: column;
+    }
+}
+
+
+
+
+.textos {
+    display: flex;
+    width: 50%;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .textos {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+
+
+.textos h3{
+    font-size: 3rem;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.644), 0 0 30px ; 
+
+}
+
+.textos p{
+    font-size: 1.5rem;
+    margin: 1rem;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 100;
+}
+
+
+.botones {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2rem; /* Ajusta este valor según lo necesites */
+}
+
+@media (max-width: 768px) {
+    .botones{
+       flex-direction: column;
+       width: 60%;
+       height: auto;
+    }
+}
+
+
+
+.btn{
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: white;
+    background-color: #FF2EF8;
+    font-weight: 700;
+    border: none;
+    border-radius: 3rem;
+    padding: .5rem 2rem;
+    transition: transform 1s ease, background-color 1.4s ease, color 1.5s ease, box-shadow 1.3s ease;
+}
+
+@media (max-width: 768px) {
+    .botones .btn{
+        margin: 1rem;
+        padding: 1rem;
+    }
+}
+
+
+.btn:hover {
+    transform: scale(1.3); 
+    background-color: #000000; 
+    color: white; 
+    box-shadow: 5px 10px 0 rgba(255, 255, 255, 0.932);
+
+}
+
+.nave {
+    display: flex;
+    width: 50%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+@media (max-width: 768px) {
+    .nave {
+        width: 100%;
+        height: auto;
+        margin-top: 2rem;
+    }
+}
+
+
+.nave img{
+    width: 25rem;
+    height: auto;
+    border-radius: 3rem;
+}
+
+@media (max-width: 768px) {
+    .nave img {
+        width: 20rem;
+        height: auto;
+    }
+}
+
+
+
+

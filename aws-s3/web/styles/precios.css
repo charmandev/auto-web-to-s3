@@ -1,0 +1,169 @@
+* {
+    padding: 0;
+    margin: 0;
+    background-color: #281549;
+    font-family: sans-serif;
+    box-sizing: border-box; /* Asegura que padding y border sean incluidos en el ancho/altura */
+}
+
+
+html, body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.header h3{
+    font-size: 4rem;
+    color: white;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.8), 0 0 30px ; 
+    font-weight: 400;    
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.main{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+.marcianosCards{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+    
+}
+
+.marcianosCards img {
+    width: 15rem; 
+    height: auto; 
+
+}
+
+
+
+
+.marcianosCards h3 {
+    font-size: 2rem;
+    color: #FF4FF3;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin: 10px;
+}
+
+.marcianosCards p {
+    font-size: .9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #f1f1f1;
+    margin: 1rem;
+}
+.marcianosCards h4 {
+    font-size: 1.5rem;
+    color: #d4c707;
+    position: relative;
+    display: inline-block; 
+}
+
+.marcianosCards h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px; 
+    background-color: #d4c707; 
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.marcianosCards h4:hover::after {
+    transform: scaleX(1); 
+}
+
+
+
+
+
+
+
+ /* CSS PARA EL CARRUSEL */
+
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.marcianosCards {
+    flex: 0 0 100%; 
+    max-width: 100%;
+}
+
+
+@media (min-width: 769px) { 
+    .carousel-inner {
+        flex-wrap: nowrap;
+        transform: none !important;
+    }
+    .marcianosCards {
+        flex: 0 0 33.333%;
+    }
+}
+
+
+
+
+ /* CSS DE BOTONES PARA EL CARRUSEL GOD */
+.carousel-control-prev, .carousel-control-next {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    background-color: rgb(255, 255, 255); 
+    color: #d400f0; 
+    border: 1px solid #000000; 
+    border-radius: 5rem;
+    cursor: pointer; 
+    padding: 10px 15px; 
+    font-size: 24px; 
+    z-index: 100; 
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    opacity: 0.75; 
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 1); 
+}
+
+.carousel-control-prev {
+    left: 10px;
+}
+
+.carousel-control-next {
+    right: 10px;
+}

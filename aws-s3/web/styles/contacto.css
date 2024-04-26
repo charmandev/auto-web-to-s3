@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-optical-sizing: auto;
+    font-style: normal;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    min-height: 100vh; 
+  }
+  
+  body {
+    background-image: linear-gradient(to right, #000214, #1000bf85);
+  }
+
+
+.main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+
+
+.contactoFormulario{
+    display: flex;
+    width: 50%;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.correoElectronico{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.correoElectronico h4{
+    font-size: 1.5rem;
+    color: white;
+}
+
+
+.contactoFormulario {
+    width: 100%;
+    max-width: 500px; /* Ajusta según la anchura deseada */
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.contactoFormulario h2 {
+    text-align: center;
+    color: #333;
+}
+
+.correoElectronico {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.correoElectronico img {
+    margin-right: 10px;
+}
+
+.formularioMensaje {
+    display: flex;
+    gap: 10px; /* Espacio entre el campo de texto y el botón */
+}
+
+.formularioMensaje input[type="text"] {
+    flex-grow: 1; /* Ocupa todo el espacio disponible */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.formularioMensaje button {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formularioMensaje button:hover {
+    background-color: #004095;
+}

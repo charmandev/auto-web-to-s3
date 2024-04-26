@@ -1,0 +1,109 @@
+*{
+    padding: 0;
+    margin: 0;
+    background-color: #281549;
+    font-family:sans-serif;
+
+}
+
+
+body{
+    width: 100%;
+    min-height: 100vh; /* Viewport Height */
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.header h3{
+    font-size: 2rem;
+    margin-top: 2rem;
+    color: white;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.527), 0 0 30px ; 
+    font-weight: 400;    
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.main{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.marcianosCards{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+    
+}
+
+.marcianosCards img {
+    width: 15rem; /* Establece el ancho de las imágenes */
+    height: auto; /* Mantiene la proporción de las imágenes */
+
+}
+
+
+
+
+.marcianosCards h3 {
+    font-size: 1rem;
+    color: #FF4FF3;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin: 10px;
+}
+
+.marcianosCards p {
+    font-size: .9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #f1f1f1;
+    margin: 1rem;
+}
+.marcianosCards h4 {
+    font-size: 1.5rem;
+    color: #d4c707;
+    position: relative;
+    display: inline-block; /* O 'block' si el elemento debe ocupar toda la línea */
+}
+
+.marcianosCards h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px; /* Altura del subrayado */
+    background-color: #d4c707; /* Color del subrayado */
+    transform: scaleX(0); /* Inicia sin estar visible */
+    transition: transform 0.3s ease-in-out; /* Animación suave de aparición */
+}
+
+.marcianosCards h4:hover::after {
+    transform: scaleX(1); /* Aparece al pasar el mouse */
+}
+
+
+
+
+.fullscreen-overlay {
+    position: fixed; /* Uso de fixed para que la imagen se quede fija y cubra todo siempre */
+    top: 0;
+    left: 0;
+    width: 100vw; /* 100% del viewport width */
+    height: 100vh; /* 100% del viewport height */
+    z-index: 1000; /* Asegura que esté sobre todo */
+    background: url('/images/fullscreen-overlay.png') no-repeat center center; /* Ajusta tu URL */
+    background-size: cover; /* Cubre todo el espacio sin distorsión */
+}
