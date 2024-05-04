@@ -1,5 +1,3 @@
 variable "bucket_name" {
-  default = "charmandev2"
+  default = "$REPO"
 }
-
-
