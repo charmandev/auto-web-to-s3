@@ -7,7 +7,7 @@ resource "aws_route53_zone" "my_zone" {
 }
 
 resource "aws_route53_record" "root" {
-  name    = "tuwebi.com.ar"
+  name    = "$DOMINIO"
   type    = "A"
   zone_id = aws_route53_zone.my_zone.zone_id
 
@@ -19,7 +19,7 @@ resource "aws_route53_record" "root" {
 }
 
 resource "aws_route53_record" "www" {
-  name    = "www.tuwebi.com.ar"
+  name    = "www.$DOMINIO"
   type    = "A"
   zone_id = aws_route53_zone.my_zone.zone_id
 
