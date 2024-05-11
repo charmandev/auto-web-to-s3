@@ -13,7 +13,6 @@ jobs:
       - name: Listar archivos
         run: |
           ls -l
-          cd aws-s3/web 
           ls
           
       - name: Checkout repository
