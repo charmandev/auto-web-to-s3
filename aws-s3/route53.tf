@@ -1,5 +1,5 @@
 resource "aws_route53_zone" "my_zone" {
-  name = "$dominio"
+  name = "$DOMINIO"
 
   lifecycle {
     ignore_changes = all
