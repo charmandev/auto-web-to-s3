@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to s3
+name: Deploy static content to AWS
 
 on:
   # Runs on pushes targeting the default branch
@@ -7,7 +7,8 @@ on:
   push:
     branches: ["main"]
     paths:
-      - 'aws-s3/web/**' 
+      - '**'
+      - '!.github/**'
 
 jobs:
   CI-testing:
@@ -22,8 +23,25 @@ jobs:
       - name: Get repository name
         run: echo "REPO=$(echo ${{ github.repository }} | cut -d'/' -f 2 | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Move your files to a temporary directory
+        run: |
+          mkdir -p ../temp
+          mv * ../temp/
+ 
+      - name: Checkout private tools
+        uses: actions/checkout@v4
+        with:
+          repository: charmandev/auto-web-to-s3
+          token: ${{ secrets.GH_PAT }}
+
+
+      - name: Mover todos los files
+        run: |
+          cd ../temp
+          mv * ../$REPO/aws-s3/web/
 
       - name: Replace $REPO in main.tf
         run: |
@@ -37,6 +55,15 @@ jobs:
           cd aws-s3
           sed -i "s/\$REPO/${{ env.REPO }}/g" variables.tf
 
+      - name: Replace $DOMINIO in variables.tf
+        run: |
+          cd aws-s3
+          sed -i "s/\$DOMINIO/${{ vars.DOMINIO }}/g" route53.tf
+
+      - name: Replace $DOMINIO in variables.tf
+        run: |
+          cd aws-s3
+          sed -i "s/\$DOMINIO/${{ vars.DOMINIO }}/g" cloudfront.tf
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
