@@ -23,7 +23,7 @@ jobs:
         run: echo "REPO=$(echo ${{ github.repository }} | cut -d'/' -f 2 | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Checkout code
-        uses: actions/checkout@v2 
+        uses: actions/checkout@v4
 
       - name: Replace $REPO in main.tf
         run: |
