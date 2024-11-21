@@ -11,7 +11,7 @@ resource "aws_acm_certificate" "certificate" {
   domain_name               = aws_route53_zone.my_zone.name
   subject_alternative_names = [
     "*.${aws_route53_zone.my_zone.name}",
-    "www.dev-${aws_route53_zone.my_zone.name}"
+    "*.dev-${aws_route53_zone.my_zone.name}"
   ]
   validation_method         = "DNS"
 
