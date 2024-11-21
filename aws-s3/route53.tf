@@ -31,7 +31,7 @@ resource "aws_route53_record" "www" {
 }
 
 resource "aws_route53_record" "dev" {
-  name    = "www.dev-$DOMINIO"
+  name    = "www.dev.$DOMINIO"
   type    = "A"
   zone_id = aws_route53_zone.my_zone.zone_id
 
