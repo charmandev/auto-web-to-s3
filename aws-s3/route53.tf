@@ -30,6 +30,17 @@ resource "aws_route53_record" "www" {
   }
 }
 
+resource "aws_route53_record" "dev" {
+  name    = "www.dev-$DOMINIO"
+  type    = "A"
+  zone_id = aws_route53_zone.my_zone.zone_id
+
+  alias {
+    name                   = aws_cloudfront_distribution.s3_distribution_dev.domain_name
+    zone_id                = aws_cloudfront_distribution.s3_distribution_dev.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
 
 resource "aws_route53_record" "cert_dns" {
   for_each = {
