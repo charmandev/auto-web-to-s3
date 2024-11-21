@@ -31,4 +31,15 @@ resource "aws_s3_bucket" "bucket_web" {
 
 }
 
+resource "aws_s3_bucket" "bucket_web_dev" {
+  bucket = var.bucket_name_dev
 
+  tags = {
+    Name = format("%s-web", var.bucket_name_dev)
+  }
+
+  website {
+    index_document = "index.html"
+  }
+
+}
