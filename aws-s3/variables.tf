@@ -7,5 +7,5 @@ variable "bucket_name_dev" {
 }
 
 variable "DOMINIO" {
-  default     = "$DOMINIO" # Cambia esto por el valor predeterminado que necesites
+  default = "$DOMINIO" # Cambia esto por el valor predeterminado que necesites
 }
