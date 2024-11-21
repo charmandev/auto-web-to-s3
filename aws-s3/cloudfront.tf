@@ -58,7 +58,7 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity_dev" {
 }
 
 
-resource "aws_cloudfront_distribution" "s3_distribution" {
+resource "aws_cloudfront_distribution" "s3_distribution_dev" {
   origin {
     domain_name = aws_s3_bucket.bucket_web_dev.bucket_regional_domain_name
     origin_id   = var.bucket_name_dev
