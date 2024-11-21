@@ -1,4 +1,3 @@
-
 resource "aws_s3_bucket_policy" "bucket_policy" {
   depends_on = [aws_s3_bucket_public_access_block.public_access_block, aws_s3_bucket_object.site_files]
   bucket = aws_s3_bucket.bucket_web.id
@@ -15,9 +14,9 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
         Resource = "${aws_s3_bucket.bucket_web.arn}/*"
       },
       {
-        Sid = "PublicListBucket"
-        Effect = "Allow"
-        Principal = "*"
+        Sid = "PublicListBucket",
+        Effect = "Allow",
+        Principal = "*",
         Action = [
           "s3:ListBucket"
         ],
@@ -36,9 +35,8 @@ resource "aws_s3_bucket_public_access_block" "public_access_block" {
   restrict_public_buckets = false
 }
 
-
 resource "aws_s3_bucket_policy" "bucket_policy_dev" {
-  depends_on = [aws_s3_bucket_public_access_block.public_access_block, aws_s3_bucket_object.site_files]
+  depends_on = [aws_s3_bucket_public_access_block.public_access_block_dev, aws_s3_bucket_object.site_files]
   bucket = aws_s3_bucket.bucket_web_dev.id
 
   policy = jsonencode({
@@ -53,9 +51,9 @@ resource "aws_s3_bucket_policy" "bucket_policy_dev" {
         Resource = "${aws_s3_bucket.bucket_web_dev.arn}/*"
       },
       {
-        Sid = "PublicListBucket"
-        Effect = "Allow"
-        Principal = "*"
+        Sid = "PublicListBucket",
+        Effect = "Allow",
+        Principal = "*",
         Action = [
           "s3:ListBucket"
         ],
@@ -65,7 +63,7 @@ resource "aws_s3_bucket_policy" "bucket_policy_dev" {
   })
 }
 
-resource "aws_s3_bucket_public_access_block" "public_access_block" {
+resource "aws_s3_bucket_public_access_block" "public_access_block_dev" {
   bucket = aws_s3_bucket.bucket_web_dev.id
 
   block_public_acls       = false
