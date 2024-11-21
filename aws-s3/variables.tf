@@ -7,7 +7,5 @@ variable "bucket_name_dev" {
 }
 
 variable "DOMINIO" {
-  description = "El dominio base utilizado para las distribuciones CloudFront"
-  type        = string
   default     = "$DOMINIO" # Cambia esto por el valor predeterminado que necesites
 }
