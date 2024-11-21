@@ -18,7 +18,7 @@ resource "aws_s3_bucket_object" "site_files" {
   etag = filemd5("${path.module}/web/${each.value}")
 }
 
-resource "aws_s3_bucket_object" "site_files" {
+resource "aws_s3_bucket_object" "site_files_dev" {
   for_each = fileset("${path.module}/web-dev", "**/*")
 
   bucket        = aws_s3_bucket.bucket_web_dev.id
