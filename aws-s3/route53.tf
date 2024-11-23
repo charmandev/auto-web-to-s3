@@ -1,12 +1,12 @@
 # Obtener la hosted zone existente
 data "aws_route53_zone" "my_zone" {
-  name         = "$DOMINIO"
+  name         = var.DOMINIO
   private_zone = false  # Cambiar a true si la zona es privada
 }
 
 # Crear el registro raíz
 resource "aws_route53_record" "root" {
-  name    = "$DOMINIO"
+  name    = var.DOMINIO
   type    = "A"
   zone_id = data.aws_route53_zone.my_zone.zone_id
 
@@ -19,7 +19,7 @@ resource "aws_route53_record" "root" {
 
 # Crear el registro www
 resource "aws_route53_record" "www" {
-  name    = "www.$DOMINIO"
+  name    = "www.${var.DOMINIO}"
   type    = "A"
   zone_id = data.aws_route53_zone.my_zone.zone_id
 
@@ -32,7 +32,7 @@ resource "aws_route53_record" "www" {
 
 # Crear el registro dev
 resource "aws_route53_record" "dev" {
-  name    = "dev.$DOMINIO"
+  name    = "dev.${var.DOMINIO}"
   type    = "A"
   zone_id = data.aws_route53_zone.my_zone.zone_id
 
@@ -46,7 +46,7 @@ resource "aws_route53_record" "dev" {
 # Crear los registros para la validación del certificado (si es necesario)
 resource "aws_route53_record" "cert_dns" {
   for_each = {
-    for dvo in aws_acm_certificate.certificate.domain_validation_options : dvo.domain_name => {
+    for dvo in data.aws_acm_certificate.existing_certificate.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
