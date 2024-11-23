@@ -1,11 +1,11 @@
 output "site_url" {
   description = "The website endpoint of the S3 bucket"
-  value = aws_s3_bucket.bucket_web.website_endpoint
+  value       = aws_s3_bucket.bucket_web.website_endpoint
 }
 
 output "site_url_dev" {
   description = "The website endpoint of the S3 bucket"
-  value = aws_s3_bucket.bucket_web_dev.website_endpoint
+  value       = aws_s3_bucket.bucket_web_dev.website_endpoint
 }
 
 output "cloudfront_domain_name" {
@@ -20,14 +20,15 @@ output "cloudfront_domain_name_dev" {
 
 output "acm_certificate_arn" {
   description = "The ARN of the ACM certificate"
-  value       = aws_acm_certificate.certificate.arn
+  value       = data.aws_acm_certificate.existing_certificate.arn
 }
 
 output "route53_record" {
   description = "The DNS record for the domain"
   value       = aws_route53_record.www.name
 }
+
 output "name_servers" {
   description = "The name servers for the Route53 zone"
-  value       = aws_route53_zone.my_zone.name_servers
+  value       = data.aws_route53_zone.my_zone.name_servers
 }
