@@ -1,15 +1,12 @@
-resource "aws_route53_zone" "my_zone" {
-  name = "$DOMINIO"
-
-  lifecycle {
-    ignore_changes = all
-  }
+data "aws_route53_zone" "my_zone" {
+  name         = "$DOMINIO"
+  private_zone = false  # Cambia a true si la zona es privada
 }
 
 resource "aws_route53_record" "root" {
   name    = "$DOMINIO"
   type    = "A"
-  zone_id = aws_route53_zone.my_zone.zone_id
+  zone_id = data.aws_route53_zone.my_zone.zone_id
 
   alias {
     name                   = aws_cloudfront_distribution.s3_distribution.domain_name
@@ -21,7 +18,7 @@ resource "aws_route53_record" "root" {
 resource "aws_route53_record" "www" {
   name    = "www.$DOMINIO"
   type    = "A"
-  zone_id = aws_route53_zone.my_zone.zone_id
+  zone_id = data.aws_route53_zone.my_zone.zone_id
 
   alias {
     name                   = aws_cloudfront_distribution.s3_distribution.domain_name
@@ -33,7 +30,7 @@ resource "aws_route53_record" "www" {
 resource "aws_route53_record" "dev" {
   name    = "dev.$DOMINIO"
   type    = "A"
-  zone_id = aws_route53_zone.my_zone.zone_id
+  zone_id = data.aws_route53_zone.my_zone.zone_id
 
   alias {
     name                   = aws_cloudfront_distribution.s3_distribution_dev.domain_name
@@ -56,7 +53,7 @@ resource "aws_route53_record" "cert_dns" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = aws_route53_zone.my_zone.zone_id
+  zone_id         = data.aws_route53_zone.my_zone.zone_id
 }
 
 resource "aws_acm_certificate_validation" "certificate" {
