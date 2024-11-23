@@ -5,9 +5,9 @@ data "aws_route53_zone" "my_zone" {
 }
 
 
-# Crear el registro platform
-resource "aws_route53_record" "platform" {
-  name    = "platform.${var.DOMINIO}"
+# Crear el registro  $SUBDOMINIO
+resource "aws_route53_record" " $SUBDOMINIO" {
+  name    = " $SUBDOMINIO.${var.DOMINIO}"
   type    = "A"
   zone_id = data.aws_route53_zone.my_zone.zone_id
 
@@ -20,7 +20,7 @@ resource "aws_route53_record" "platform" {
 
 # Crear el registro dev
 resource "aws_route53_record" "dev" {
-  name    = "platform-dev.${var.DOMINIO}"
+  name    = " $SUBDOMINIO-dev.${var.DOMINIO}"
   type    = "A"
   zone_id = data.aws_route53_zone.my_zone.zone_id
 
