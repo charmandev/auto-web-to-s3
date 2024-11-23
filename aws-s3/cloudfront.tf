@@ -66,7 +66,7 @@ resource "aws_cloudfront_distribution" "s3_distribution_dev" {
     origin_id   = var.bucket_name_dev
 
     s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity_dev.cloudfront_access_identity_path
+      origin_access_identity = aws_cloudfront_origin_access_identity.cloudfront_access_identity_path
     }
   }
 
