@@ -6,7 +6,7 @@ data "aws_route53_zone" "my_zone" {
 
 # Crear el registro raíz
 resource "aws_route53_record" "root" {
-  name    = var.DOMINIO
+  name    = "www.platform.${var.DOMINIO}"
   type    = "A"
   zone_id = data.aws_route53_zone.my_zone.zone_id
 
@@ -19,7 +19,7 @@ resource "aws_route53_record" "root" {
 
 # Crear el registro www
 resource "aws_route53_record" "www" {
-  name    = "www.${var.DOMINIO}"
+  name    = "platform.${var.DOMINIO}"
   type    = "A"
   zone_id = data.aws_route53_zone.my_zone.zone_id
 
@@ -32,7 +32,7 @@ resource "aws_route53_record" "www" {
 
 # Crear el registro dev
 resource "aws_route53_record" "dev" {
-  name    = "dev.${var.DOMINIO}"
+  name    = "platform-dev.${var.DOMINIO}"
   type    = "A"
   zone_id = data.aws_route53_zone.my_zone.zone_id
 
