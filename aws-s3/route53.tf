@@ -4,21 +4,9 @@ data "aws_route53_zone" "my_zone" {
   private_zone = false  # Cambiar a true si la zona es privada
 }
 
-# Crear el registro raíz
-resource "aws_route53_record" "root" {
-  name    = "www.platform.${var.DOMINIO}"
-  type    = "A"
-  zone_id = data.aws_route53_zone.my_zone.zone_id
 
-  alias {
-    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
-    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
-    evaluate_target_health = false
-  }
-}
-
-# Crear el registro www
-resource "aws_route53_record" "www" {
+# Crear el registro platform
+resource "aws_route53_record" "platform" {
   name    = "platform.${var.DOMINIO}"
   type    = "A"
   zone_id = data.aws_route53_zone.my_zone.zone_id
