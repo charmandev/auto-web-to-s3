@@ -23,11 +23,6 @@ output "acm_certificate_arn" {
   value       = data.aws_acm_certificate.existing_certificate.arn
 }
 
-output "route53_record" {
-  description = "The DNS record for the domain"
-  value       = aws_route53_record.www.name
-}
-
 output "name_servers" {
   description = "The name servers for the Route53 zone"
   value       = data.aws_route53_zone.my_zone.name_servers
