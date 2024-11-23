@@ -37,7 +37,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     max_ttl                = 86400
   }
 
-  aliases = ["www.platform.${var.DOMINIO}", "platform.${var.DOMINIO}"]
+  aliases = ["platform.${var.DOMINIO}"]
 
   price_class = "PriceClass_100"
 
